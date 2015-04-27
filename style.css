@@ -8,7 +8,7 @@
     src:url('icons.woff') format('woff');
     font-weight: normal;
     font-size: 10px;
-    b
+    
 }
 
 body{
@@ -33,11 +33,15 @@ body{
 .photo{
     width: 260px;
     height: 320px;
+    left: 50%;
+    top: 50%;
+    margin: -160px 0 0 -130px;
     position: absolute;
     z-index:1;
     -webkit-box-shadow: 0 0 1px rgba(0,0,0,.01);
     -moz-box-shadow: 0 0 1px rgba(0,0,0,.01);
     box-shadow: 0 0 1px rgba(0,0,0,.01);
+    -webkit-transition: all 0.6s;
 }
 
 .photo .side{
@@ -158,12 +162,31 @@ body{
     line-height: 30px;
     text-align: center;
     color: #ffffff;
+    opacity: 0;
 }
 
 .nav .i_current{
 
+    -webkit-transform: scale(1);
+}
+
+.nav .i_current:after{
+    opacity: 1;
 }
 
 .nav .i_back{
+    -webkit-transform: rotateY(-180deg);
+    background-color: #555;
 
+}
+/* For optimisation */
+
+.photo-wrap{
+    -webkit-transform-origin: 0% 50%;
+}
+.photo_front .photo-wrap{
+    -webkit-transform:translate(0px,0px) rotateY(0deg);
+}
+.photo_back .photo-wrap{
+    -webkit-transform:translate(260px,0px) rotateY(180deg);
 }

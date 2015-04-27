@@ -5,10 +5,16 @@
 // Switch between front or back photos
 function turn (elem){
     var cls =elem.className;
+    var n =elem.id.split('_')[1];
+    if(){
+
+    }
     if(/photo_front/.test(cls)){
         cls=cls.replace(/photo_front/,'photo_back');
+        g('#nav_'+n).className+=' i_back ';
     }else{
         cls.replace(/photo_back/,'photo_front')
+        g('#nav_'+n).className=g('#nav_'+n).className.replace(/\s*i_back\s*/,' ');
     }
     return cls.className;
 }
@@ -48,6 +54,12 @@ function rsort(n){
 
     for(s=0;s<_photo.length;s++){
         _photo[s].className = _photo[s].className.replace(/\s*photo_center\s*/,'');
+        _photo[s].className = _photo[s].className.replace(/\s*photo_front\s*/,'');
+        _photo[s].className = _photo[s].className.replace(/\s*photo_back\s*/,'');
+        _photo[s].style.left='';
+        _photo[s].style.top='';
+        _photo[s].style['-webkit-transform']='rotate(0deg) scale(1.3)';
+        photos.push(_photo[s]);
     }
 
     var photo_center = g('#photo_'+n);
@@ -62,7 +74,7 @@ function rsort(n){
         var photo =photos_left[s];
         photo.style.left=random(ranges.left.x)+'px';
         photo.style.top=random(ranges.left.y)+'px';
-        photo.style['-webkit-transform']='rotate('+random([-150,150])+'deg)';
+        photo.style['-webkit-transform']='rotate('+random([-150,150])+'deg) scale(1)';
 
     }
 
@@ -70,7 +82,7 @@ function rsort(n){
         var photo =photos_right[s];
         photo.style.left=random(ranges.left.x)+'px';
         photo.style.top=random(ranges.left.y)+'px';
-        photo.style['-webkit-transform']='rotate('+random([-150,150])+'deg)';
+        photo.style['-webkit-transform']='rotate('+random([-150,150])+'deg) scale(1)';
 
     }
 
