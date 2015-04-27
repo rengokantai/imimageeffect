@@ -23,11 +23,15 @@ var data=data;
 function addPhotos(){
     var template =g('#wrap').innerHTML;
     var html=[];
+    var nav=[];
+
 
     for(s in data){
         var _html =template.replace('{{index}}',s).replace('{{img}}',data[s]).replace('{{caption}}',data[s].caption).replace('{{desc}}',data[s].desc);
         html.push(_html);
     }
+
+    nav.push('<span id="nav+s+'+s+'" onclick="turn()" class="i"></span>');
 
     g('#wrap').innerHTML=html.join('');
     rsort(random([0,data.length]));
